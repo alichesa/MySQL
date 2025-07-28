@@ -1,11 +1,6 @@
 # MySQL
-```
-【函数（上） - 《Python零基础到全栈系列课程》】https://www.bilibili.com/video/BV1RV4y1Y7DT?vd_source=becd8b7f34f6905611607df57bb422c1
-```
-```
-[1、MySQL](https://xfei.flowus.cn/share/cead6994-b09b-4009-a16e-cf61693acc40)
-```
-==有空再过一遍小林coding吧==
+<img width="936" height="428" alt="image" src="https://github.com/user-attachments/assets/13c0f9d4-5d12-47fd-b645-0dd0b186b835" />
+<img width="972" height="670" alt="image" src="https://github.com/user-attachments/assets/a19e6959-7d6d-4812-93c5-52131a01dd04" />
 - MySQL是基于关系的数据库，通过表格实现，Redis是非关系数据库，主要以视频音频等非关系类型进行存储，通过Key-Value实现。
 - 数据库的本质是 增create 删drop 改alter 查show
 - 库的本质是文件夹，表的本质是文件
