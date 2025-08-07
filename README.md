@@ -1,25 +1,42 @@
 # MySQL
 <img width="936" height="428" alt="image" src="https://github.com/user-attachments/assets/13c0f9d4-5d12-47fd-b645-0dd0b186b835" />
 <img width="972" height="670" alt="image" src="https://github.com/user-attachments/assets/a19e6959-7d6d-4812-93c5-52131a01dd04" />
-- MySQL是基于关系的数据库，通过表格实现，Redis是非关系数据库，主要以视频音频等非关系类型进行存储，通过Key-Value实现。
-- 数据库的本质是 增create 删drop 改alter 查show
+- MySQL是基于关系的数据库，通过表格实现，Redis是非关系数据库，支持多种数据结构（如字符串、哈希等），通过Key-Value实现。
+
+- 数据库的本质是 增create(INSERT INTO users (name, age) VALUES ('张三', 25);) 删delete(DELETE FROM users WHERE id = 1;) 改update(UPDATE users SET age = 26 WHERE name = '张三';) 查read(SELECT * FROM users WHERE age > 20;)
+
 - 库的本质是文件夹，表的本质是文件
+
 - 数据库的存储方式有很多，但是四种最常用innodb、myisam、memory、blackhole。Innodb支持事务性，行级锁，外键约束等，是5.5后版本主用的存储方式，mysiam只能支持到表锁，并发性没有那么高，是5.5之前的主流。
-- innodb偏向于使用自增id作为主键主要是方便查询和管理，如果使用其他的那么使得排序过于随机
+<img width="1190" height="591" alt="image" src="https://github.com/user-attachments/assets/f928a3c5-c8a7-4464-82a8-5f1e3b40936b" />
+
+- innodb偏向于使用自增id作为主键主要是方便查询和管理(如果主键是自增 ID​​：新插入的数据会​​顺序追加​​到 B+树的末尾，写入效率高（减少页分裂和随机 I/O）)，如果使用其他的那么使得排序过于随机(如果主键是无序的（如 UUID）​​：新数据可能插入到 B+树的中间位置，导致频繁的​​页分裂​​和​​磁盘碎片​​，降低写入性能)
+
 - MyISAM是5.5之前的主要存储方法，Innodb是5.5之后的主要存储方法，仅Innodb是支持外键的，MyISAM采用的是索引和数据分离，而Innodb是一起存储的
+<img width="1205" height="497" alt="image" src="https://github.com/user-attachments/assets/60be81de-ea13-48c6-9c03-f461b0feef96" />
+
 - 数据库的宽度是数据的显示宽度，而不是存储宽度，存储宽度在指定存储类型的时候就指定了
-- float、 double、 decimal 中虽然最后一个最精确，但是它的范围最小，因为其本质实现形式是通过字符串实现的
-- varchar的范围是0-65535,且是显示的行总数
-- 枚举是单选、集合是多选
+  
+- float、 double、 decimal 中虽然最后一个最精确，但是它的范围最小，因为其本质实现形式是通过字符串实现的; varchar的范围是0-65535,且是显示的行总数
+
+- ​​ENUM（枚举）用于实现单选​​，而 ​​SET（集合）用于实现多选​​
+
 - MySQL的内部结构可以分为服务层和存储层，服务层包含连接器，查询缓存，分析器，优化器，执行器等
-- SQL语言分为三大类，DDL，DML，DCL，分别为数据语言，管理语言和控制语言
+<img width="804" height="286" alt="image" src="https://github.com/user-attachments/assets/ba27f36e-8141-48fe-9ae7-8efd6b6a39d7" />
+
+- SQL语言分为三大类，DDL(执行后​​自动提交​​（无法回滚，MySQL 中部分 DDL 支持事务，如 ALTER TABLE）)，DML(需要显式提交或回滚（COMMIT/ ROLLBACK）)，DCL(涉及用户权限管理和事务完整性)，分别为数据语言，管理语言和控制语言
+
 - Drop（DDL）是删除整个表，Delete（DML）是删除部分行，并会记录删除操作在日志里面，方便回滚。Truncate（DDL）是保留表删除所有数据，不可回滚
-- DDL是数据定义语言，包含create、drop等。DML是数据管理语言，包含Insert、update、delete。DCL是数据控制语言，
+<img width="1057" height="427" alt="image" src="https://github.com/user-attachments/assets/2dcbcea6-4932-488d-95f5-705ac60c53f5" />
+
 - 脏读，不可重读，幻读都是因为并发程度高引起的问题。隔离程度高，那么并发性就会低
+  
 - 脏读--修改了未提交，然后又发生了回滚，读取了本就不存在的数据。不可重读--数据发生了更改，导致第一次和第二次读取结果不同。幻读--也是指读取的结果不同，但更偏向于数据的增加或者删除。丢弃更改--两人同时对同一个数据进行更改，导致其中一个人的更改丢弃
+  
 - RR（可重复读）可以防止不可重复读，但是幻读依然存在。RC（读已提交）能防止脏读，RR和RC都是利用了锁实现的。RC利用了共享锁和行级锁，RR利用了行级锁和间隙锁
 - MySQL使用的是B+ 树，B+ 树的值最后都是放在叶子节点，这样就使得构造的树更加宽，从而索引更加快，且叶子节点之间会有双向链表，支持范围查询
 - MySQL中的事务回滚主要是依靠undo log实现的，所有对事物的修改都会加入到事务回滚日志中，若提交了修改则无法进行回滚
+<img width="1021" height="281" alt="image" src="https://github.com/user-attachments/assets/591a702e-2f1b-4e45-9c25-cae06989b3f4" />
 - 共享锁SHARE 是可以让大家一起读，但是无法修改，可以多个共享锁。排他锁UPDATE是不允许其他人进行读写
 - 间隙锁是锁定表格间隙，可以防止幻读，除非事务提交结束了否则是不会进行进程的
 - 事务性保证了数据的一致性，ACID。MyISAM是不支持事务性。Innodb能够支持到行级锁，而MyISAM只能支持到表级锁
