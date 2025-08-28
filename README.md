@@ -1,4 +1,3 @@
-<img width="1327" height="299" alt="image" src="https://github.com/user-attachments/assets/c76f4a27-9509-4843-a798-c1fd36df6f8f" /># MySQL
 <img width="936" height="428" alt="image" src="https://github.com/user-attachments/assets/13c0f9d4-5d12-47fd-b645-0dd0b186b835" />
 <img width="972" height="670" alt="image" src="https://github.com/user-attachments/assets/a19e6959-7d6d-4812-93c5-52131a01dd04" />
 - MySQL是基于关系的数据库，通过表格实现，Redis是非关系数据库，支持多种数据结构（如字符串、哈希等），通过Key-Value实现。
