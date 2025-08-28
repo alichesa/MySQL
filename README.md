@@ -1,4 +1,4 @@
-# MySQL
+<img width="1327" height="299" alt="image" src="https://github.com/user-attachments/assets/c76f4a27-9509-4843-a798-c1fd36df6f8f" /># MySQL
 <img width="936" height="428" alt="image" src="https://github.com/user-attachments/assets/13c0f9d4-5d12-47fd-b645-0dd0b186b835" />
 <img width="972" height="670" alt="image" src="https://github.com/user-attachments/assets/a19e6959-7d6d-4812-93c5-52131a01dd04" />
 - MySQL是基于关系的数据库，通过表格实现，Redis是非关系数据库，支持多种数据结构（如字符串、哈希等），通过Key-Value实现。
@@ -30,7 +30,9 @@ CREATE TABLE example (
 - MySQL的内部结构可以分为服务层和存储层，服务层包含连接器，查询缓存，分析器，优化器，执行器等
 <img width="804" height="286" alt="image" src="https://github.com/user-attachments/assets/ba27f36e-8141-48fe-9ae7-8efd6b6a39d7" />
 
-- SQL语言分为三大类，DDL(执行后​​自动提交​​（无法回滚，MySQL 中部分 DDL 支持事务，如 ALTER TABLE）)，DML(需要显式提交或回滚（COMMIT/ ROLLBACK）)，DCL(涉及用户权限管理和事务完整性)，分别为数据语言，管理语言和控制语言
+
+- SQL语言分为四大类，DDL(用于定义或修改数据库对象（如表、索引等）的结构，常见语句包括 CREATE、ALTER、DROP、TRUNCATE 等。​​DDL 通常执行后会自动提交事务，且大多不可回滚)，DML(用于操作表中的数据，包括增删改查，常见语句如 INSERT、UPDATE、DELETE，有时也包括 SELECT（查询）。​​DML 不会自动提交，必须通过 COMMIT 提交或 ROLLBACK 回滚，支持事务)，DCL(用于管理用户权限（如 GRANT、REVOKE）和部分事务控制（如 COMMIT、ROLLBACK、SAVEPOINT）。​​权限语句通常自动提交，事务控制语句用于显式管理事务状态)
+<img width="1327" height="299" alt="image" src="https://github.com/user-attachments/assets/3bf097d1-e3f1-47ee-9a23-d363fc5fd5e0" />
 
 - Drop（DDL）是删除整个表，Delete（DML）是删除部分行，并会记录删除操作在日志里面，方便回滚。Truncate（DDL）是保留表删除所有数据，不可回滚
 <img width="1057" height="427" alt="image" src="https://github.com/user-attachments/assets/2dcbcea6-4932-488d-95f5-705ac60c53f5" />
